@@ -1,0 +1,23 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9094
+app:
+  kafka:
+    kafkaMessageTopic: message-topic
+  base-url: http://localhost:8085/actuator/metrics/
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    shutdown:
+      enabled: true
+    health:
+      show-details: always
+    metrics:
+      enabled: true
+server:
+  port: 8085
+
