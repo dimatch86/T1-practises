@@ -13,7 +13,6 @@ import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.concurrent.CompletableFuture;
@@ -38,13 +37,7 @@ public class MetricsProducerService {
     }
 
     private List<MetricEvent> getAllMetrics() {
-        List<MetricEvent> metricEvents = new ArrayList<>();
-        Set<String> metricNames = getMetricNames();
-        metricNames.forEach(name -> {
-            MetricEvent metricEvent = getSingleMetric(name);
-            metricEvents.add(metricEvent);
-        });
-        return metricEvents;
+        return getMetricNames().stream().map(this::getSingleMetric).toList();
     }
 
     private Set<String> getMetricNames() {
