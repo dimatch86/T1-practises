@@ -1,0 +1,238 @@
+{
+	"info": {
+		"_postman_id": "f749b491-c83b-4b0d-bfb6-49f66ea059b1",
+		"name": "T1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "app_add_product",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"milk\",\r\n    \"price\":150\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/app/addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"addProduct"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app_get_product",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/app/getProduct?name=milk",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"getProduct"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "milk"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app_addProducts",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "[\r\n    {\r\n        \"name\":\"potato\",\r\n        \"price\":225\r\n    },\r\n    {\r\n        \"name\":\"coffee\",\r\n        \"price\":15\r\n    }\r\n]",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/app/addProducts",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"addProducts"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "app_getProducts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/app/getProducts?price=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"app",
+						"getProducts"
+					],
+					"query": [
+						{
+							"key": "price",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistic_average",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/avg?name=addProduct",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"avg"
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "addProduct"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistic_max",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/max",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"max"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistic_avg_group",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/avg-group?group=add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"avg-group"
+					],
+					"query": [
+						{
+							"key": "group",
+							"value": "add"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistic_getMaximums",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/maximums",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"maximums"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "statistic_greater-than",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/statistic/greater-than?duration=700",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"statistic",
+						"greater-than"
+					],
+					"query": [
+						{
+							"key": "duration",
+							"value": "700"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
