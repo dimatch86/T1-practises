@@ -1,0 +1,8 @@
+rest-interceptor:
+  enable: true
+  logger:
+    destination: FILE
+    path: logs/
+    filename: myfile
+    level: info
+
