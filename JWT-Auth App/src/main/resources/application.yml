@@ -1,0 +1,36 @@
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/person_db
+    username: jwt_user
+    password: jwt_password
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: create-drop
+    show-sql: true
+
+jwt:
+  secret: tyiuroiuopyiuioytidgfhdfqwerzxcqwerewretyuyti
+  expiration: 30m
+scheduled-tasks:
+  blacklist: 0 0 0 * * ?
+
+super-user:
+  name: admin
+  email: admin@mail.ru
+  password: admin
+  role: ROLE_ADMIN
+
+swagger:
+  title: Application API
+  version: 1.0
+  description: Monitoring service API
+  license:
+    name: Apache 2.0
+    url: http://springdoc.org
+  contact:
+    name: '@Dimatch86'
+    email: dimatch86@mail.ru
+  server:
+    url: http://localhost:8080/

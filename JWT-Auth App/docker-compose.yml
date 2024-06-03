@@ -1,0 +1,13 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    container_name: person_db
+    ports:
+      - 5433:5432
+    restart: on-failure
+    environment:
+      POSTGRES_USER: jwt_user
+      POSTGRES_PASSWORD: jwt_password
+      POSTGRES_DB: person_db
+

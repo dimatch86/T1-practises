@@ -1,0 +1,275 @@
+{
+	"info": {
+		"_postman_id": "aabf34b3-6204-4466-b70f-f724ab431cbf",
+		"name": "security_app",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21875775"
+	},
+	"item": [
+		{
+			"name": "register_user",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Паша\",\r\n    \"email\": \"user@mail.ru\",\r\n    \"password\": \"user\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\" : \"admin@mail.ru\",\r\n    \"password\" : \"admin\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logout",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLnJ1IiwiaWF0IjoxNzE3MzU3NTIxLCJleHAiOjE3MTczNTkzMjF9.wmWgI6d5TbCdHplHLJ_dNwVVMoGp_pH1qExSqF_KjzM",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/auth/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"auth",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLnJ1IiwiaWF0IjoxNzE3Mjc1MTIzLCJleHAiOjE3MTcyNzY5MjN9.mLym0mJjF5VxnLFV3EFzNafwPVtMrxgQqI3jf-rnTR4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/info",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"info"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUsers",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaW1hNjQ2QG1haWwucnUiLCJpYXQiOjE3MTczNTY1MTQsImV4cCI6MTcxNzM1ODMxNH0.jOSwdMFQWmfR_B40hMZZOFtc95fuekCXzRH2hbzhMbg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/users",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "addRole",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLnJ1IiwiaWF0IjoxNzE3MzU2Njc5LCJleHAiOjE3MTczNTg0Nzl9.EYpP5VQmKbgO8IPu0e5xFDAXrVQveQQ4dCqionSMPT4",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/add-role/2?type=ROLE_ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"add-role",
+						"2"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "ROLE_ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "removeRole",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJkaW1hNjRAbWFpbC5ydSIsImlhdCI6MTcxNjgyMzM1NywiZXhwIjoxNzE2ODI1MTU3fQ.tXoFesVRTivbr6Z4mMrr5-n99sHWl_JJcML1wQbYB_s",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/remove-role/1?type=ROLE_ADMIN",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"remove-role",
+						"1"
+					],
+					"query": [
+						{
+							"key": "type",
+							"value": "ROLE_ADMIN"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "deleteUser",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLnJ1IiwiaWF0IjoxNzE3MzUxNDY0LCJleHAiOjE3MTczNTMyNjR9.9d9o7Vz99texQiqLedPA0Jpg5yPdSNXKJVYj41YNSBA",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/user/delete/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"delete",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbkBtYWlsLnJ1IiwiaWF0IjoxNzE3MzU0Mzc5LCJleHAiOjE3MTczNTYxNzl9.dT7XytgvXvfSq0yocED7kPFG-XfGKUzDdksq9_o9gR4",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Саша\",\r\n    \"email\": \"sasha646@mail.ru\",\r\n    \"password\": \"newpassword\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/user/update/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"user",
+						"update",
+						"1"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
