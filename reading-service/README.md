@@ -43,7 +43,7 @@ Docker Desktop для запуска контейнера с базой данн
 docker-compose up -d
 ```
 
-После этого запускаем приложение из класса [src/main/java/org/example/monitoringservice/MonitoringApplication.java](src/main/java/org/example/monitoringservice/MonitoringApplication.java).
+После этого запускаем приложение из класса [src/main/java/org/example/monitoringservice/MonitoringApplication.java](src/main/java/org/example/readingservice/MonitoringApplication.java).
 После запуска бэкенд будет доступен на порту http://localhost:8085. Фронтенд будет доступен на http://localhost:8081
 
 ---

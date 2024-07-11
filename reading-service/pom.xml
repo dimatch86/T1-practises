@@ -7,11 +7,11 @@
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>3.3.0</version>
-        <relativePath/> <!-- lookup parent from repository -->
+        <relativePath/>
     </parent>
 
     <groupId>org.example</groupId>
-    <artifactId>Monitoring-Service</artifactId>
+    <artifactId>Reading-Service</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -45,6 +45,7 @@
         <spingdoc.version>2.1.0</spingdoc.version>
         <jjwt.version>0.9.1</jjwt.version>
         <jaxb.version>2.3.1</jaxb.version>
+        <org.jacoco.version>0.8.8</org.jacoco.version>
     </properties>
     <dependencies>
         <dependency>
@@ -195,6 +196,70 @@
                             <version>0.2.0</version>
                         </path>
                     </annotationProcessorPaths>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.jacoco</groupId>
+                <artifactId>jacoco-maven-plugin</artifactId>
+                <version>${org.jacoco.version}</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>prepare-agent</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jcc-report</id>
+                        <phase>test</phase>
+                        <goals>
+                            <goal>report</goal>
+                        </goals>
+                    </execution>
+                    <execution>
+                        <id>jacoco-check</id>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                        <phase>test</phase>
+                        <configuration>
+                            <rules>
+                                <rule>
+                                    <element>BUNDLE</element>
+                                    <!--<element>PACKAGE</element>-->
+                                    <!--<element>SOURCEFILE</element>-->
+                                    <!--<element>METHOD</element>-->
+                                    <!--<element>CLASS</element>-->
+                                    <limits>
+                                        <limit>
+                                            <counter>INSTRUCTION</counter>
+                                            <!--<counter>LINE</counter>-->
+                                            <!--<counter>BRANCH</counter>-->
+                                            <!--<counter>COMPLEXITY</counter>-->
+                                            <!--<counter>METHOD</counter>-->
+                                            <!--<counter>CLASS</counter>-->
+
+                                            <value>MISSEDRATIO</value>
+                                            <maximum>30%</maximum>
+                                            <!--<value>MISSEDCOUNT</value>-->
+                                            <!--<maximum>2</maximum>-->
+                                            <!--<value>COVEREDRATIO</value>-->
+                                            <!--<minimum>90%</minimum>-->
+                                            <!--<value>COVEREDCOUNT</value>-->
+                                            <!--<minimum>90</minimum>-->
+                                            <!--<value>TOTALCOUNT</value>-->
+                                            <!--<minimum>90</minimum>-->
+                                        </limit>
+                                    </limits>
+                                </rule>
+                            </rules>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <excludes>
+                        <exclude>org/example/readingservice/dto/**</exclude>
+                        <exclude>org/example/readingservice/model/**</exclude>
+                    </excludes>
                 </configuration>
             </plugin>
         </plugins>
