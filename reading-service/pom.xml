@@ -2,7 +2,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!--<packaging>war</packaging>-->
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -26,8 +25,6 @@
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
         <junit-jupiter.testcontainers.version>1.17.6</junit-jupiter.testcontainers.version>
         <postgres.testcontainers.version>1.17.6</postgres.testcontainers.version>
-        <!--<slf4j.version>2.0.9</slf4j.version>-->
-        <!--<logback.version>1.4.11</logback.version>-->
         <mockito.version>5.2.0</mockito.version>
         <mockito.junit.version>5.4.0</mockito.junit.version>
         <assertj.version>3.25.3</assertj.version>
@@ -45,6 +42,9 @@
         <spring-test.version>6.1.3</spring-test.version>
         <spring-mock-mvc.version>3.0.0</spring-mock-mvc.version>
         <json-path.version>2.2.0</json-path.version>
+        <spingdoc.version>2.1.0</spingdoc.version>
+        <jjwt.version>0.9.1</jjwt.version>
+        <jaxb.version>2.3.1</jaxb.version>
     </properties>
     <dependencies>
         <dependency>
@@ -66,22 +66,8 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-            <version>2.1.0</version>
+            <version>${spingdoc.version}</version>
         </dependency>
-
-
-
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
-            <version>${springframework.version}</version>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>org.yaml</groupId>
-            <artifactId>snakeyaml</artifactId>
-            <version>${snakeyaml.version}</version>
-        </dependency>-->
 
         <dependency>
             <groupId>com.fasterxml.jackson.core</groupId>
@@ -93,21 +79,11 @@
             <artifactId>jackson-datatype-jsr310</artifactId>
             <version>${jackson-datatype.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-aspects</artifactId>
-            <version>${spring.aspects.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
-        <!--<dependency>
-            <groupId>org.hibernate.validator</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate-validator.version}</version>
-        </dependency>-->
         <dependency>
             <groupId>org.glassfish.expressly</groupId>
             <artifactId>expressly</artifactId>
@@ -132,12 +108,12 @@
         <dependency>
             <groupId>io.jsonwebtoken</groupId>
             <artifactId>jjwt</artifactId>
-            <version>0.9.1</version>
+            <version>${jjwt.version}</version>
         </dependency>
         <dependency>
             <groupId>javax.xml.bind</groupId>
             <artifactId>jaxb-api</artifactId>
-            <version>2.3.1</version>
+            <version>${jaxb.version}</version>
         </dependency>
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -185,29 +161,6 @@
             <version>${assertj.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-core</artifactId>
-            <version>${mockito.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-junit-jupiter</artifactId>
-            <version>${mockito.junit.version}</version>
-        </dependency>-->
-
-        <!--<dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-test</artifactId>
-            <version>${spring-test.version}</version>
-            <scope>test</scope>
-        </dependency>-->
-        <!--<dependency>
-            <groupId>io.rest-assured</groupId>
-            <artifactId>spring-mock-mvc</artifactId>
-            <version>${spring-mock-mvc.version}</version>
-            <scope>test</scope>
-        </dependency>-->
         <dependency>
             <groupId>com.jayway.jsonpath</groupId>
             <artifactId>json-path</artifactId>
@@ -218,14 +171,6 @@
     <build>
         <finalName>monitoring-service</finalName>
         <plugins>
-            <!--<plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-                <version>3.3.1</version>
-                <configuration>
-                    <warSourceDirectory>src/main/webapp</warSourceDirectory>
-                </configuration>
-            </plugin>-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
