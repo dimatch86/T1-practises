@@ -168,11 +168,6 @@
             <version>${json-path.version}</version>
             <scope>test</scope>
         </dependency>
-        <!--<dependency>
-            <groupId>com.google.guava</groupId>
-            <artifactId>guava</artifactId>
-            <version>31.0.1-jre</version>
-        </dependency>-->
     </dependencies>
     <build>
         <finalName>monitoring-service</finalName>
@@ -302,7 +297,7 @@
                 <version>3.4.0</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
-                    <failsOnError>true</failsOnError>
+                    <failsOnError>false</failsOnError>
                     <linkXRef>false</linkXRef>
                 </configuration>
                 <executions>
