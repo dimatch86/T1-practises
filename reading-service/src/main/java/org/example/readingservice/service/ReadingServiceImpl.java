@@ -2,7 +2,6 @@ package org.example.readingservice.service;
 
 import lombok.RequiredArgsConstructor;
 
-//import org.example.loggingstarter.aop.Loggable;
 import org.example.readingservice.exception.custom.NotAvailableReadingException;
 import org.example.readingservice.exception.custom.TooRecentReadingException;
 import org.example.readingservice.model.reading.Reading;
