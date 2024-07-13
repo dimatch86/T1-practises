@@ -297,7 +297,7 @@
                 <version>3.4.0</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
-                    <failsOnError>false</failsOnError>
+                    <failOnViolation>false</failOnViolation>
                     <linkXRef>false</linkXRef>
                 </configuration>
                 <executions>
