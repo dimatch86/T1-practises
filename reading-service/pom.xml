@@ -310,6 +310,31 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-pmd-plugin</artifactId>
+                <version>3.15.0</version>
+                <configuration>
+                    <rulesets>
+                        <ruleset>rulesets/java/basic.xml</ruleset>
+                        <ruleset>rulesets/java/braces.xml</ruleset>
+                        <ruleset>rulesets/java/design.xml</ruleset>
+                        <ruleset>rulesets/java/unusedcode.xml</ruleset>
+                    </rulesets>
+                    <minimumTokens>100</minimumTokens>
+                    <outputDirectory>custom-pmd-reports</outputDirectory>
+                    <failOnViolation>false</failOnViolation>
+                </configuration>
+                <executions>
+                    <execution>
+                        <phase>validate</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>cpd-check</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 </project>
