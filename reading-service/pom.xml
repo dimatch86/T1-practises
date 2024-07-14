@@ -46,6 +46,8 @@
         <jjwt.version>0.9.1</jjwt.version>
         <jaxb.version>2.3.1</jaxb.version>
         <org.jacoco.version>0.8.8</org.jacoco.version>
+        <spotbugs-maven-plugin.version>4.8.6.0</spotbugs-maven-plugin.version>
+        <spotbugs.version>4.8.6</spotbugs.version>
     </properties>
     <dependencies>
         <dependency>
@@ -334,6 +336,33 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.spotbugs</groupId>
+                <artifactId>spotbugs-maven-plugin</artifactId>
+                <version>${spotbugs-maven-plugin.version}</version>
+                <dependencies>
+                    <dependency>
+                        <groupId>com.github.spotbugs</groupId>
+                        <artifactId>spotbugs</artifactId>
+                        <version>${spotbugs.version}</version>
+                    </dependency>
+                </dependencies>
+                <executions>
+                    <execution>
+                        <phase>compile</phase>
+                        <goals>
+                            <goal>check</goal>
+                            <goal>gui</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <effort>Max</effort>
+                    <threshold>Medium</threshold>
+                    <xmlOutput>true</xmlOutput>
+                    <failOnError>false</failOnError>
+                </configuration>
             </plugin>
         </plugins>
     </build>
