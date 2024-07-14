@@ -48,6 +48,8 @@
         <org.jacoco.version>0.8.8</org.jacoco.version>
         <spotbugs-maven-plugin.version>4.8.6.0</spotbugs-maven-plugin.version>
         <spotbugs.version>4.8.6</spotbugs.version>
+        <pmd-plugin.version>3.15.0</pmd-plugin.version>
+        <checkstyle-plugin.version>3.4.0</checkstyle-plugin.version>
     </properties>
     <dependencies>
         <dependency>
@@ -296,7 +298,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>3.4.0</version>
+                <version>${checkstyle-plugin.version}</version>
                 <configuration>
                     <configLocation>checkstyle.xml</configLocation>
                     <failOnViolation>false</failOnViolation>
@@ -315,7 +317,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.15.0</version>
+                <version>${pmd-plugin.version}</version>
                 <configuration>
                     <rulesets>
                         <ruleset>rulesets/java/basic.xml</ruleset>
