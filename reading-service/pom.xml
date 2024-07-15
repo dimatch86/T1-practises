@@ -326,7 +326,7 @@
                         <ruleset>rulesets/java/unusedcode.xml</ruleset>
                     </rulesets>
                     <minimumTokens>100</minimumTokens>
-                    <outputDirectory>custom-pmd-reports</outputDirectory>
+                    <targetDirectory>./target/custom-pmd-reports</targetDirectory>
                     <failOnViolation>false</failOnViolation>
                 </configuration>
                 <executions>
@@ -355,7 +355,6 @@
                         <phase>compile</phase>
                         <goals>
                             <goal>check</goal>
-                            <goal>gui</goal>
                         </goals>
                     </execution>
                 </executions>
