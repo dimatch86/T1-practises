@@ -229,29 +229,11 @@
                             <rules>
                                 <rule>
                                     <element>BUNDLE</element>
-                                    <!--<element>PACKAGE</element>-->
-                                    <!--<element>SOURCEFILE</element>-->
-                                    <!--<element>METHOD</element>-->
-                                    <!--<element>CLASS</element>-->
                                     <limits>
                                         <limit>
                                             <counter>INSTRUCTION</counter>
-                                            <!--<counter>LINE</counter>-->
-                                            <!--<counter>BRANCH</counter>-->
-                                            <!--<counter>COMPLEXITY</counter>-->
-                                            <!--<counter>METHOD</counter>-->
-                                            <!--<counter>CLASS</counter>-->
-
                                             <value>MISSEDRATIO</value>
                                             <maximum>30%</maximum>
-                                            <!--<value>MISSEDCOUNT</value>-->
-                                            <!--<maximum>2</maximum>-->
-                                            <!--<value>COVEREDRATIO</value>-->
-                                            <!--<minimum>90%</minimum>-->
-                                            <!--<value>COVEREDCOUNT</value>-->
-                                            <!--<minimum>90</minimum>-->
-                                            <!--<value>TOTALCOUNT</value>-->
-                                            <!--<minimum>90</minimum>-->
                                         </limit>
                                     </limits>
                                 </rule>
