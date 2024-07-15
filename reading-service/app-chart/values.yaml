@@ -1,0 +1,13 @@
+
+app:
+  name: myapp
+  image: dimatch86/monitoring-service:1.0-SNAPSHOT
+  replicas: 1
+  port: 8085
+
+postgres:
+  image: postgres:12.3
+  port: 5432
+  database: monitoring_service_db
+  user: ylab_user
+  password: ylab_password
