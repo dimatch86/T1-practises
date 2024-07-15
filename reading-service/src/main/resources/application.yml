@@ -3,9 +3,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost:5434/monitoring_service_db
-    username: ylab_user
-    password: ylab_password
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5434/monitoring_service_db}
+    username: ${POSTGRES_USER:ylab_user}
+    password: ${POSTGRES_PASSWORD:ylab_password}
   liquibase:
     enabled: true
     drop-first: true
