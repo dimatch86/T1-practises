@@ -19,13 +19,9 @@ spec:
             - containerPort: {{ .Values.app.port }}
           env:
             - name: DATABASE_URL
-              value: "jdbc:postgresql://chart-postgresql:{{ .Values.postgresql.containerPorts.postgresql }}/{{ .Values.postgresql.global.postgresql.auth.database }}"
+              value: "jdbc:postgresql://chart:{{ .Values.postgres.ports.internal }}/{{ .Values.postgres.defaultDatabase.name }}"
             - name: POSTGRES_USER
-              value: {{ .Values.postgresql.global.postgresql.auth.username }}
+              value: {{ .Values.postgres.defaultDatabase.user }}
             - name: POSTGRES_PASSWORD
-              value: {{ .Values.postgresql.global.postgresql.auth.password }}
-              #valueFrom:
-                #secretKeyRef:
-                  #name: chart-postgresql
-                  #key: password
+              value: {{ .Values.postgres.defaultDatabase.password }}
       restartPolicy: Always

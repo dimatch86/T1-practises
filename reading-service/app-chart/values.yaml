@@ -5,24 +5,10 @@
   #replicas: 1
   #port: 8085
 
-postgresql:
-  enabled: true
-  global:
-    postgresql:
-      auth:
-        postgresPassword: password
-        username: t1_user
-        password: password
-        database: monitoring_service_db
-
-  #auth:
-    #enablePostgresUser: false
-    #postgresPassword: password
-    #username: t1_user
-    #password: password
-    #database: monitoring_service_db
-    #existingSecret: password
-    #existingSecretKey: password
-
-  containerPorts:
-    postgresql: 5432
+postgres:
+  defaultDatabase:
+    name: monitoring_service_db
+    user: t1_user
+    password: password
+  ports:
+    internal: 5432
