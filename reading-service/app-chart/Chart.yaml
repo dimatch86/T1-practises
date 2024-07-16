@@ -5,7 +5,10 @@ type: application
 version: 0.1.0
 appVersion: "0.1.0"
 dependencies:
-  - name: postgresql-ha
-    version: 14.2.11
+  - name: postgresql
+    version: 15.5.16
     repository: https://charts.bitnami.com/bitnami
-    condition: pg.enabled
+    condition: postgresql.enabled
+  - name: App-Sub-Chart
+    version: 0.1.0
+    repository: file://../app-sub-chart

@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.app.name }}
+spec:
+  replicas: {{ .Values.app.replicas }}
+  selector:
+    matchLabels:
+      app: {{ .Values.app.name }}
+  template:
+    metadata:
+      labels:
+        app: {{ .Values.app.name }}
+    spec:
+      containers:
+        - name: {{ .Values.app.name }}
+          image: {{ .Values.app.image }}
+          ports:
+            - containerPort: {{ .Values.app.port }}
+          env:
+            - name: DATABASE_URL
+              value: "jdbc:postgresql://chart-postgresql:{{ .Values.postgresql.containerPorts.postgresql }}/{{ .Values.postgresql.global.postgresql.auth.database }}"
+            - name: POSTGRES_USER
+              value: {{ .Values.postgresql.global.postgresql.auth.username }}
+            - name: POSTGRES_PASSWORD
+              value: {{ .Values.postgresql.global.postgresql.auth.password }}
+              #valueFrom:
+                #secretKeyRef:
+                  #name: chart-postgresql
+                  #key: password
+      restartPolicy: Always

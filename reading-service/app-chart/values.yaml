@@ -1,13 +1,28 @@
 
-app:
-  name: myapp
-  image: dimatch86/monitoring-service:1.0-SNAPSHOT
-  replicas: 1
-  port: 8085
+#app:
+  #name: myapp
+  #image: dimatch86/monitoring-service:1.0-SNAPSHOT
+  #replicas: 1
+  #port: 8085
 
-postgres:
-  image: postgres:12.3
-  port: 5432
-  database: monitoring_service_db
-  user: ylab_user
-  password: ylab_password
+postgresql:
+  enabled: true
+  global:
+    postgresql:
+      auth:
+        postgresPassword: password
+        username: t1_user
+        password: password
+        database: monitoring_service_db
+
+  #auth:
+    #enablePostgresUser: false
+    #postgresPassword: password
+    #username: t1_user
+    #password: password
+    #database: monitoring_service_db
+    #existingSecret: password
+    #existingSecretKey: password
+
+  containerPorts:
+    postgresql: 5432
