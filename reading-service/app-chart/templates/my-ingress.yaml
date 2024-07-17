@@ -11,7 +11,7 @@ metadata:
     #nginx.org/proxy-pass-headers: localhost:8080
 spec:
   rules:
-    - host: myfront.test
+    - host: monitoring-service
       http:
         paths:
           - path: /auth
