@@ -11,3 +11,6 @@ dependencies:
   - name: App-Sub-Chart
     version: 0.1.0
     repository: file://../app-sub-chart
+  - name: Front-Sub-Chart
+    version: 0.1.0
+    repository: file://../front-sub-chart

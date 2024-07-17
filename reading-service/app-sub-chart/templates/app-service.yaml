@@ -4,9 +4,9 @@ kind: Service
 metadata:
   name: {{ .Values.app.name }}
 spec:
-  type: LoadBalancer
+  type: ClusterIP
   selector:
     app: {{ .Values.app.name }}
   ports:
-    - port: 8086
+    - port: 8085
       targetPort: {{ .Values.app.port }}
