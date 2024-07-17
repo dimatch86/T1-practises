@@ -11,34 +11,34 @@ metadata:
     #nginx.org/proxy-pass-headers: localhost:8080
 spec:
   rules:
-    - host: monitoring-service
+    - host: {{ .Values.ingress.host }}
       http:
         paths:
-          - path: /auth
+          - path: {{ .Values.ingress.app.paths.auth }}
             pathType: Prefix
             backend:
               service:
-                name: localhost
+                name: {{ .Values.ingress.app.service_name }}
                 port:
-                  number: 8085
-          - path: /reading
+                  number: {{ .Values.ingress.app.port }}
+          - path: {{ .Values.ingress.app.paths.reading }}
             pathType: Prefix
             backend:
               service:
-                name: localhost
+                name: {{ .Values.ingress.app.service_name }}
                 port:
-                  number: 8085
-          - path: /reading-type
+                  number: {{ .Values.ingress.app.port }}
+          - path: {{ .Values.ingress.app.paths.reading_type }}
             pathType: Prefix
             backend:
               service:
-                name: localhost
+                name: {{ .Values.ingress.app.service_name }}
                 port:
-                  number: 8085
-          - path: /
+                  number: {{ .Values.ingress.app.port }}
+          - path: {{ .Values.ingress.front.paths.root }}
             pathType: Prefix
             backend:
               service:
-                name: myfront
+                name: {{ .Values.ingress.front.service_name }}
                 port:
-                  number: 8080
+                  number: {{ .Values.ingress.front.port }}

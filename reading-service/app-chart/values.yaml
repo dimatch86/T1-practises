@@ -1,10 +1,3 @@
-
-#app:
-  #name: myapp
-  #image: dimatch86/monitoring-service:1.0-SNAPSHOT
-  #replicas: 1
-  #port: 8085
-
 postgres:
   defaultDatabase:
     name: monitoring_service_db
@@ -12,3 +5,18 @@ postgres:
     password: password
   ports:
     internal: 5432
+
+ingress:
+  host: monitoring-service
+  app:
+    service_name: localhost
+    port: 8085
+    paths:
+        auth: /auth
+        reading: /reading
+        reading_type: /reading-type
+  front:
+    service_name: myfront
+    port: 8080
+    paths:
+      root: /
