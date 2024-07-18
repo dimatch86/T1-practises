@@ -9,41 +9,41 @@ spec:
     - host: {{ .Values.ingress.host }}
       http:
         paths:
-          - path: {{ .Values.ingress.app.paths.auth }}
+          - path: {{ .Values.ingress.pod_properties.app.paths.auth }}
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.app.service_name }}
+                name: {{ .Values.ingress.pod_properties.app.service_name }}
                 port:
-                  number: {{ .Values.ingress.app.port }}
-          - path: {{ .Values.ingress.app.paths.reading }}
+                  number: {{ .Values.ingress.pod_properties.app.port }}
+          - path: {{ .Values.ingress.pod_properties.app.paths.reading }}
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.app.service_name }}
+                name: {{ .Values.ingress.pod_properties.app.service_name }}
                 port:
-                  number: {{ .Values.ingress.app.port }}
-          - path: {{ .Values.ingress.app.paths.reading_type }}
+                  number: {{ .Values.ingress.pod_properties.app.port }}
+          - path: {{ .Values.ingress.pod_properties.app.paths.reading_type }}
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.app.service_name }}
+                name: {{ .Values.ingress.pod_properties.app.service_name }}
                 port:
-                  number: {{ .Values.ingress.app.port }}
+                  number: {{ .Values.ingress.pod_properties.app.port }}
           - path: /swagger-ui
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.app.service_name }}
+                name: {{ .Values.ingress.pod_properties.app.service_name }}
                 port:
-                  number: {{ .Values.ingress.app.port }}
+                  number: {{ .Values.ingress.pod_properties.app.port }}
           - path: /v3
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.app.service_name }}
+                name: {{ .Values.ingress.pod_properties.app.service_name }}
                 port:
-                  number: {{ .Values.ingress.app.port }}
+                  number: {{ .Values.ingress.pod_properties.app.port }}
 
     - host: myfront
       http:
@@ -52,6 +52,6 @@ spec:
             pathType: Prefix
             backend:
               service:
-                name: {{ .Values.ingress.front.service_name }}
+                name: {{ .Values.ingress.pod_properties.front.service_name }}
                 port:
-                  number: {{ .Values.ingress.front.port }}
+                  number: {{ .Values.ingress.pod_properties.front.port }}

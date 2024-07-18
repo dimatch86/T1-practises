@@ -8,15 +8,16 @@ postgres:
 
 ingress:
   host: monitoring-service
-  app:
-    service_name: localhost
-    port: 8085
-    paths:
-        auth: /auth
-        reading: /reading
-        reading_type: /reading-type
-  front:
-    service_name: myfront
-    port: 8080
-    paths:
-      root: /
+  pod_properties:
+    app:
+      service_name: localhost
+      port: 8085
+      paths:
+          auth: /auth
+          reading: /reading
+          reading_type: /reading-type
+    front:
+      service_name: myfront
+      port: 8080
+      paths:
+        root: /
