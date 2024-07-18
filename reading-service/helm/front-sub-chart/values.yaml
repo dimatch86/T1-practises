@@ -1,0 +1,5 @@
+front:
+  name: myfront
+  image: dimatch86/monitoring-service-frontend:1.0.11
+  replicas: 1
+  port: 8080

@@ -35,10 +35,20 @@ spec:
                 name: {{ .Values.ingress.app.service_name }}
                 port:
                   number: {{ .Values.ingress.app.port }}
-          - path: {{ .Values.ingress.front.paths.root }}
-            pathType: Prefix
+          #- path: {{ .Values.ingress.front.paths.root }}
+            #pathType: Prefix
+            #backend:
+              #service:
+                #name: {{ .Values.ingress.front.service_name }}
+                #port:
+                  #number: {{ .Values.ingress.front.port }}
+    - host: myfront
+      http:
+        paths:
+          - path: /
+            pathType: ImplementationSpecific
             backend:
               service:
-                name: {{ .Values.ingress.front.service_name }}
+                name: myfront
                 port:
-                  number: {{ .Values.ingress.front.port }}
+                  number: 8080
