@@ -1,5 +1,5 @@
 app:
-  name: localhost
+  name: myapp
   image: dimatch86/monitoring-service:1.0-SNAPSHOT
   replicas: 1
   port: 8085

@@ -1,5 +1,5 @@
 apiVersion: v2
-name: Front-Sub-Chart
+name: Front_Sub_Chart
 description: My helm chart for front
 type: application
 version: 0.1.0

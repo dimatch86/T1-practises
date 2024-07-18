@@ -1,5 +1,5 @@
 apiVersion: v2
-name: App-Sub-Chart
+name: App_Sub_Chart
 description: My helm chart for k8s
 type: application
 version: 0.1.0

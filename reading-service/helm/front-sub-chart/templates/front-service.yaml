@@ -3,7 +3,6 @@ kind: Service
 metadata:
   name: {{ .Values.front.name }}
 spec:
-  #type: LoadBalancer
   selector:
     app: {{ .Values.front.name }}
   ports:

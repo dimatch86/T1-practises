@@ -6,18 +6,24 @@ postgres:
   ports:
     internal: 5432
 
+App_Sub_Chart:
+  app:
+    name: myapp
+    port: 8085
+
+Front_Sub_Chart:
+  front:
+    name: myfront
+    port: 8080
+
 ingress:
   host: monitoring-service
   pod_properties:
     app:
-      service_name: localhost
-      port: 8085
       paths:
           auth: /auth
           reading: /reading
           reading_type: /reading-type
     front:
-      service_name: myfront
-      port: 8080
       paths:
         root: /

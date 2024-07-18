@@ -8,9 +8,9 @@ dependencies:
   - name: postgres
     version: 1.5.0
     repository: https://romanow.github.io/helm-charts/
-  - name: App-Sub-Chart
+  - name: App_Sub_Chart
     version: 0.1.0
     repository: file://../app-sub-chart
-  - name: Front-Sub-Chart
+  - name: Front_Sub_Chart
     version: 0.1.0
     repository: file://../front-sub-chart
