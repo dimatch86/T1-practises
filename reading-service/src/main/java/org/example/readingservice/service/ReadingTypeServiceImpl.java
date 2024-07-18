@@ -2,6 +2,7 @@ package org.example.readingservice.service;
 
 import lombok.RequiredArgsConstructor;
 //import org.example.loggingstarter.aop.Loggable;
+import org.example.loggingstarter.aop.Loggable;
 import org.example.readingservice.exception.custom.ReadingTypeAlreadyExistsException;
 import org.example.readingservice.model.reading.ReadingType;
 import org.example.readingservice.repository.ReadingTypeRepository;
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-//@Loggable
+@Loggable
 @RequiredArgsConstructor
 public class ReadingTypeServiceImpl implements ReadingTypeService {
 

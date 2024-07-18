@@ -12,7 +12,7 @@
 
     <groupId>org.example</groupId>
     <artifactId>Reading-Service</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.1-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -171,6 +171,11 @@
             <artifactId>json-path</artifactId>
             <version>${json-path.version}</version>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.example</groupId>
+            <artifactId>logging-starter</artifactId>
+            <version>0.0.1-SNAPSHOT</version>
         </dependency>
     </dependencies>
     <build>
