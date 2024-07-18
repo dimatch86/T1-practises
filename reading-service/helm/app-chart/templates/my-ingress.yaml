@@ -4,11 +4,6 @@ metadata:
   name: myingress
   annotations:
     kubernetes.io/ingress.class: nginx
-    #nginx.org/proxy-connect-timeout: "30s"
-    #nginx.org/proxy-read-timeout: "20s"
-    #nginx.org/client-max-body-size: "4m"
-    #nginx.org/proxy-hide-headers: localhost:8080
-    #nginx.org/proxy-pass-headers: localhost:8080
 spec:
   rules:
     - host: {{ .Values.ingress.host }}
@@ -35,20 +30,28 @@ spec:
                 name: {{ .Values.ingress.app.service_name }}
                 port:
                   number: {{ .Values.ingress.app.port }}
-          #- path: {{ .Values.ingress.front.paths.root }}
-            #pathType: Prefix
-            #backend:
-              #service:
-                #name: {{ .Values.ingress.front.service_name }}
-                #port:
-                  #number: {{ .Values.ingress.front.port }}
+          - path: /swagger-ui
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.ingress.app.service_name }}
+                port:
+                  number: {{ .Values.ingress.app.port }}
+          - path: /v3
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.ingress.app.service_name }}
+                port:
+                  number: {{ .Values.ingress.app.port }}
+
     - host: myfront
       http:
         paths:
           - path: /
-            pathType: ImplementationSpecific
+            pathType: Prefix
             backend:
               service:
-                name: myfront
+                name: {{ .Values.ingress.front.service_name }}
                 port:
-                  number: 8080
+                  number: {{ .Values.ingress.front.port }}
