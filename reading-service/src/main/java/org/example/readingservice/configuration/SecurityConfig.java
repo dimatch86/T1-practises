@@ -59,7 +59,7 @@ public class SecurityConfig implements WebMvcConfigurer {
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests(auth ->
                         auth.requestMatchers("auth/login", "auth/register", "/v3/api-docs/**",
-                                        "/swagger-ui/**", "/swagger").permitAll()
+                                        "/swagger-ui/**", "/swagger", "/actuator/**").permitAll()
                         .requestMatchers("reading-type/add").hasRole("ADMIN")
                 .anyRequest().authenticated())
                 .exceptionHandling(configurer -> configurer.authenticationEntryPoint(jwtAuthEntryPoint)
