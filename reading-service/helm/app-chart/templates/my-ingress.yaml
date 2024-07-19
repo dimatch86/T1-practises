@@ -44,6 +44,13 @@ spec:
                 name: {{ .Values.App_Sub_Chart.app.name }}
                 port:
                   number: {{ .Values.App_Sub_Chart.app.port }}
+          - path: /actuator
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ .Values.App_Sub_Chart.app.name }}
+                port:
+                  number: {{ .Values.App_Sub_Chart.app.port }}
 
     - host: myfront
       http:
