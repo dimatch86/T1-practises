@@ -12,6 +12,9 @@ spring:
     #default-schema: monitoring_service_schema
     change-log: classpath:db/changelog/changelog-master.xml
     #liquibase-schema: data_changelog_schema
+  main:
+    banner-mode: off
+
 jwt:
   secret: tyiuroiuopyiuioytidgfhdfqwerzxcqwer
   expiration: 30m
