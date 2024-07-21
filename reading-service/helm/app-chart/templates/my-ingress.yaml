@@ -62,3 +62,14 @@ spec:
                 name: {{ .Values.Front_Sub_Chart.front.name }}
                 port:
                   number: {{ .Values.Front_Sub_Chart.front.port }}
+
+    - host: {{ .Values.ingress.host }}
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: chart-prometheus-server
+                port:
+                  number: 9090

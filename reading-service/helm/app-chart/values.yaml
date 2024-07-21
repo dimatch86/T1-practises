@@ -10,11 +10,13 @@ App_Sub_Chart:
   app:
     name: myapp
     port: 8085
+    replicas: 1
 
 Front_Sub_Chart:
   front:
     name: myfront
     port: 8080
+    replicas: 1
 
 ingress:
   host: monitoring-service
