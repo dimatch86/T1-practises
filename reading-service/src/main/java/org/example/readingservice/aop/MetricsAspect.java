@@ -1,7 +1,8 @@
 package org.example.readingservice.aop;
 
-import io.micrometer.core.instrument.Counter;
 
+import io.micrometer.core.instrument.MeterRegistry;
+import io.micrometer.core.instrument.Tag;
 import lombok.RequiredArgsConstructor;
 import org.aspectj.lang.annotation.AfterReturning;
 import org.aspectj.lang.annotation.Aspect;
@@ -9,22 +10,25 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.example.readingservice.model.reading.Reading;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 @Aspect
 @RequiredArgsConstructor
 public class MetricsAspect {
-    private static final String HOT_WATER_READING_TYPE = "ГОРЯЧАЯ ВОДА";
-    private final Counter hotWaterReadingsCounter;
-    private final Counter totalReadingsCounter;
+    private final MeterRegistry meterRegistry;
 
     @Pointcut("execution(* org.example.readingservice.service.ReadingServiceImpl.send(*))")
     public void sendReadingPointcut() {}
 
     @AfterReturning("args(reading) && sendReadingPointcut()")
-    public void sendReadingAdvice(Reading reading){
-        if (reading.getReadingType().equals(HOT_WATER_READING_TYPE)) {
-            hotWaterReadingsCounter.increment();
-        }
-        totalReadingsCounter.increment();
+    public void sendReadingAdvice(Reading reading) {
+
+        meterRegistry.counter("total_readings_counter", List.of())
+                .increment();
+
+        meterRegistry.counter("readings_counter_by_type",
+                List.of(Tag.of("type", reading.getReadingType())))
+                .increment();
     }
 }
