@@ -14,7 +14,8 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class MetricsAspect {
     private static final String HOT_WATER_READING_TYPE = "ГОРЯЧАЯ ВОДА";
-    private  final Counter hotWaterReadingsCounter;
+    private final Counter hotWaterReadingsCounter;
+    private final Counter totalReadingsCounter;
 
     @Pointcut("execution(* org.example.readingservice.service.ReadingServiceImpl.send(*))")
     public void sendReadingPointcut() {}
@@ -24,5 +25,6 @@ public class MetricsAspect {
         if (reading.getReadingType().equals(HOT_WATER_READING_TYPE)) {
             hotWaterReadingsCounter.increment();
         }
+        totalReadingsCounter.increment();
     }
 }

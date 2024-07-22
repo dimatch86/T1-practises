@@ -15,4 +15,12 @@ public class MicrometerConfig {
                 .description("Total count of hot water readings created")
                 .register(meterRegistry);
     }
+
+    @Bean
+    public Counter totalReadingsCounter(MeterRegistry meterRegistry) {
+        return Counter.builder("total_readings_counter")
+                .tags("status", "created")
+                .description("Total count of readings created")
+                .register(meterRegistry);
+    }
 }
