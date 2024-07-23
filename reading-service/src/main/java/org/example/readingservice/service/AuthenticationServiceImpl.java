@@ -2,7 +2,6 @@ package org.example.readingservice.service;
 
 import lombok.RequiredArgsConstructor;
 
-//import org.example.loggingstarter.aop.Loggable;
 import org.example.readingservice.dto.request.LoginRequestDto;
 import org.example.readingservice.dto.response.AuthResponseDto;
 import org.example.readingservice.exception.custom.UserAlreadyExistException;
@@ -23,7 +22,6 @@ import java.util.List;
  * Implementation of the Authentication Service interface.
  */
 @Service
-//@Loggable
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
