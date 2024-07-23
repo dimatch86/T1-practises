@@ -12,6 +12,8 @@ spring:
     change-log: classpath:db/changelog/changelog-master.xml
   main:
     banner-mode: off
+  application:
+    name: monitoring-service
 
 jwt:
   secret: tyiuroiuopyiuioytidgfhdfqwerzxcqwer
