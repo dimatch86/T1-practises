@@ -11,6 +11,9 @@ App_Sub_Chart:
     name: myapp
     port: 8085
     replicas: 1
+  jaeger:
+    host: chart-jaeger-collector
+    port: 4317
 
 Front_Sub_Chart:
   front:

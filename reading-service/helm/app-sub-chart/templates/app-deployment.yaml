@@ -19,11 +19,11 @@ spec:
             - containerPort: {{ .Values.app.port }}
           env:
             - name: DATABASE_URL
-              value: "jdbc:postgresql://chart:{{ .Values.postgres.ports.internal }}/{{ .Values.postgres.defaultDatabase.name }}"
+              value: "jdbc:postgresql://{{ .Values.postgres.serviceName }}:{{ .Values.postgres.ports.internal }}/{{ .Values.postgres.defaultDatabase.name }}"
             - name: POSTGRES_USER
               value: {{ .Values.postgres.defaultDatabase.user }}
             - name: POSTGRES_PASSWORD
               value: {{ .Values.postgres.defaultDatabase.password }}
             - name: JAEGER_COLLECTOR_URL
-              value: "http://chart-jaeger-collector:4317"
+              value: "http://{{ .Values.jaeger.host }}:{{ .Values.jaeger.port }}"
       restartPolicy: Always

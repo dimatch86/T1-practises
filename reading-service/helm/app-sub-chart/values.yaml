@@ -11,3 +11,7 @@ postgres:
     password: password
   ports:
     internal: 5432
+  serviceName: chart
+jaeger:
+  host: chart-jaeger-collector
+  port: 4317
