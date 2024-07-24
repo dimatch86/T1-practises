@@ -33,3 +33,10 @@ prometheus:
   server:
     global:
       scrape_interval: 15s
+
+jaeger:
+  provisionDataStore:
+    cassandra: false
+    elasticsearch: true
+  storage:
+    type: elasticsearch
