@@ -24,4 +24,6 @@ spec:
               value: {{ .Values.postgres.defaultDatabase.user }}
             - name: POSTGRES_PASSWORD
               value: {{ .Values.postgres.defaultDatabase.password }}
+            - name: TRACE_URL
+              value: "http://chart-jaeger-collector:4317"
       restartPolicy: Always
