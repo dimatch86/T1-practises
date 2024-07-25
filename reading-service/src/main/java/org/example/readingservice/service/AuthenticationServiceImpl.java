@@ -1,5 +1,9 @@
 package org.example.readingservice.service;
 
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.StatusCode;
+import io.opentelemetry.api.trace.Tracer;
+import io.opentelemetry.context.Scope;
 import lombok.RequiredArgsConstructor;
 
 import org.example.readingservice.dto.request.LoginRequestDto;
@@ -27,6 +31,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserRepository userRepository;
     private final AuthenticationManager authenticationManager;
     private final JwtUtils jwtUtils;
+    private final Tracer tracer;
 
     /**
      * Registers a new user.
@@ -35,7 +40,17 @@ public class AuthenticationServiceImpl implements AuthenticationService {
      */
     @Override
     public void registerUser(User user) {
-        userRepository.saveUser(user);
+        Span span = tracer.spanBuilder("registerUser").startSpan();
+        try (Scope scope = span.makeCurrent()) {
+            span.setAttribute("user.email", user.getEmail());
+            userRepository.saveUser(user);
+            span.setStatus(StatusCode.OK);
+        } catch (Exception e) {
+            span.recordException(e);
+            throw e;
+        } finally {
+            span.end();
+        }
     }
 
     @Override

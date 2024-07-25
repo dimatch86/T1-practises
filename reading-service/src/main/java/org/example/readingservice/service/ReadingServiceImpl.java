@@ -2,7 +2,6 @@ package org.example.readingservice.service;
 
 import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
-
 import org.example.loggingstarter.aop.Loggable;
 import org.example.readingservice.exception.custom.NotAvailableReadingException;
 import org.example.readingservice.exception.custom.TooRecentReadingException;

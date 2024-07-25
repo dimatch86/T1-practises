@@ -1,5 +1,8 @@
 package org.example.readingservice.service;
 
+import io.opentelemetry.api.trace.Span;
+import io.opentelemetry.api.trace.SpanBuilder;
+import io.opentelemetry.api.trace.Tracer;
 import org.example.readingservice.dto.request.LoginRequestDto;
 import org.example.readingservice.dto.response.AuthResponseDto;
 import org.example.readingservice.model.user.RoleType;
@@ -26,8 +29,11 @@ class AuthenticationServiceTest {
     private final UserRepositoryImpl userRepository = mock(UserRepositoryImpl.class);
     private final JwtUtils jwtUtils = mock(JwtUtils.class);
     Authentication authentication = mock(Authentication.class);
+    private final Tracer tracer = mock(Tracer.class);
+    private final Span span = mock(Span.class);
+    private final SpanBuilder spanBuilder = mock(SpanBuilder.class);
     private final AuthenticationManager authenticationManager = mock(AuthenticationManager.class);
-    private final AuthenticationService authenticationService = new AuthenticationServiceImpl(userRepository, authenticationManager, jwtUtils);
+    private final AuthenticationService authenticationService = new AuthenticationServiceImpl(userRepository, authenticationManager, jwtUtils, tracer);
     User currentUser;
     User newUser;
     UUID personalAccount;
@@ -45,6 +51,8 @@ class AuthenticationServiceTest {
     void registerUser_whenRegisterNotExistingUser_thenSuccess() {
 
         when(userRepository.findByEmail(newUser.getEmail())).thenReturn(Optional.empty());
+        when(tracer.spanBuilder("registerUser")).thenReturn(spanBuilder);
+        when(spanBuilder.startSpan()).thenReturn(span);
 
         authenticationService.registerUser(newUser);
 

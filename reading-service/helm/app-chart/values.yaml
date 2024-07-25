@@ -5,6 +5,7 @@ postgres:
     password: password
   ports:
     internal: 5432
+  serviceName: chart
 
 App_Sub_Chart:
   app:
