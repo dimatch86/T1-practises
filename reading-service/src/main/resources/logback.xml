@@ -4,6 +4,7 @@
     <springProperty name="destination" source="logger.destination"/>
     <springProperty name="path" source="logger.path"/>
     <springProperty name="level" source="logger.level"/>
+    <springProperty name="loggerName" source="logger.name"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -24,7 +25,7 @@
         <appender-ref ref="CONSOLE"/>
     </root>
 
-    <logger name="org.example.readingservice" level="${level}" additivity="false">
+    <logger name="${loggerName}" level="${level}" additivity="false">
         <appender-ref ref="${destination}" />
     </logger>
 </configuration>
