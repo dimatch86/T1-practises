@@ -1,0 +1,30 @@
+<configuration>
+    <property resource="application.yml" />
+    <springProperty name="fileName" source="logger.filename"/>
+    <springProperty name="destination" source="logger.destination"/>
+    <springProperty name="path" source="logger.path"/>
+    <springProperty name="level" source="logger.level"/>
+
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <Pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</Pattern>
+        </layout>
+    </appender>
+
+    <timestamp key="byStartDate" datePattern="yyyy-MM-dd'_'HH-mm-ss.SSS"/>
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${path}${filename}_${byStartDate}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE"/>
+    </root>
+
+    <logger name="org.example.readingservice" level="${level}" additivity="false">
+        <appender-ref ref="${destination}" />
+    </logger>
+</configuration>
