@@ -1,4 +1,5 @@
 <configuration>
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
     <property resource="application.yml" />
     <springProperty name="fileName" source="logger.filename"/>
     <springProperty name="destination" source="logger.destination"/>
@@ -20,12 +21,35 @@
             <pattern>%d{dd.MM.yyyy HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n [%X{traceId:-}, %X{spanId:-}]</pattern>
         </encoder>
     </appender>
+    <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <destination>localhost:5000</destination>
+        <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
+            <providers>
+                <mdc />
+                <context />
+                <logLevel />
+                <loggerName />
+                <pattern>
+                    <pattern>
+                        {
+                        "app": "test-log"
+                        }
+                    </pattern>
+                </pattern>
+                <threadName />
+                <message />
+                <logstashMarkers />
+                <stackTrace />
+            </providers>
+        </encoder>
+    </appender>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
     </root>
 
     <logger name="${loggerName}" level="${level}" additivity="false">
-        <appender-ref ref="${destination}" />
+        <!--<appender-ref ref="${destination}" />-->
+        <appender-ref ref="logstash" />
     </logger>
 </configuration>
