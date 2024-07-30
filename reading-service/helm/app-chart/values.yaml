@@ -51,3 +51,20 @@ jaeger:
     enabled: false
   query:
     enabled: false
+
+logstash:
+  logstashPipeline:
+    logstash.conf: |
+        input {
+          tcp {
+            port => 5000
+            codec => json
+          }
+        }
+        output { 
+          elasticsearch {
+            hosts => "http://elasticsearch-master:9200"
+            index => "springboot-%{app}"
+          }
+      }
+    
