@@ -53,6 +53,12 @@ jaeger:
     enabled: false
 
 logstash:
+  service:
+    ports:
+    - name: beats
+      port: 5000
+      protocol: TCP
+      targetPort: 5000
   logstashPipeline:
     logstash.conf: |
         input {
