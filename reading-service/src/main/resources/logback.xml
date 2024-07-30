@@ -6,6 +6,7 @@
     <springProperty name="path" source="logger.path"/>
     <springProperty name="level" source="logger.level"/>
     <springProperty name="loggerName" source="logger.name"/>
+    <springProperty name="logstashUrl" source="logger.logstash.url"/>
 
     <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
         <layout class="ch.qos.logback.classic.PatternLayout">
@@ -22,7 +23,7 @@
         </encoder>
     </appender>
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>localhost:5000</destination>
+        <destination>{logstashUrl}</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc />

@@ -59,3 +59,5 @@ logger:
   filename: myfile
   level: info
   name: org.example.loggingstarter
+  logstash:
+    url: ${LOGSTASH_URL:localhost:5000}
