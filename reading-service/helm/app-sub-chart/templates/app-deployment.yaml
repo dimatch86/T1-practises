@@ -26,4 +26,7 @@ spec:
               value: {{ .Values.postgres.defaultDatabase.password }}
             - name: JAEGER_COLLECTOR_URL
               value: "http://{{ .Values.jaeger.host }}:{{ .Values.jaeger.port }}"
+            - name: LOGSTASH_URL
+              value: http://chart-logstash:5000
+
       restartPolicy: Always
