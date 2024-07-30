@@ -1,6 +1,6 @@
 app:
   name: myapp
-  image: dimatch86/monitoring-service:1.6-SNAPSHOT
+  image: dimatch86/monitoring-service:1.9-SNAPSHOT
   replicas: 1
   port: 8085
 

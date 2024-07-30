@@ -23,7 +23,7 @@
         </encoder>
     </appender>
     <appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
-        <destination>{logstashUrl}</destination>
+        <destination>${logstashUrl}</destination>
         <encoder class="net.logstash.logback.encoder.LoggingEventCompositeJsonEncoder">
             <providers>
                 <mdc />
