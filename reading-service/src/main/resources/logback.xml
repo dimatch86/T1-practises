@@ -43,6 +43,9 @@
             </providers>
         </encoder>
     </appender>
+    <appender name="ASYNC" class="ch.qos.logback.classic.AsyncAppender">
+        <appender-ref ref="logstash" />
+    </appender>
 
     <root level="INFO">
         <appender-ref ref="CONSOLE"/>
@@ -50,6 +53,6 @@
 
     <logger name="${loggerName}" level="${level}" additivity="false">
         <!--<appender-ref ref="${destination}" />-->
-        <appender-ref ref="logstash" />
+        <appender-ref ref="ASYNC" />
     </logger>
 </configuration>
