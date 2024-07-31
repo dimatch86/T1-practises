@@ -15,3 +15,5 @@ postgres:
 jaeger:
   host: chart-jaeger-collector
   port: 4317
+logstash:
+  url: "chart-logstash:5000"

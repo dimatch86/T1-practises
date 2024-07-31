@@ -27,6 +27,6 @@ spec:
             - name: JAEGER_COLLECTOR_URL
               value: "http://{{ .Values.jaeger.host }}:{{ .Values.jaeger.port }}"
             - name: LOGSTASH_URL
-              value: "chart-logstash:5000"
+              value: {{ .Values.logstash.url }}
 
       restartPolicy: Always
