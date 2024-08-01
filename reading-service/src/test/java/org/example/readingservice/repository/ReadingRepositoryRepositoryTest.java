@@ -115,7 +115,7 @@ class ReadingRepositoryRepositoryTest extends AbstractTest {
     void readingsByMonth_whenUserCallsReadingsByMonth_thenReturnsHisOwnReadings() {
 
         Instant dateWithMonth1 = Instant.now();
-        Instant dateWithMonth2 = Instant.now().minus(30, ChronoUnit.DAYS);
+        Instant dateWithMonth2 = Instant.now().minus(31, ChronoUnit.DAYS);
 
         Reading hotWaterReadingMonth1 = new Reading(12.25, userPersonalAccount, "ГОРЯЧАЯ ВОДА", dateWithMonth1);
         Reading coldWaterReadingMonth1 = new Reading(12.25, adminPersonalAccount, "ХОЛОДНАЯ ВОДА", dateWithMonth1);
@@ -142,7 +142,7 @@ class ReadingRepositoryRepositoryTest extends AbstractTest {
     void readingsByMonth_whenAdminCallsReadingsByMonth_thenReturnsAllUsersReadings() {
 
         Instant dateWithMonth1 = Instant.now();
-        Instant dateWithMonth2 = Instant.now().minus(30, ChronoUnit.DAYS);
+        Instant dateWithMonth2 = Instant.now().minus(31, ChronoUnit.DAYS);
 
         Reading hotWaterReadingMonth1 = new Reading(12.25, userPersonalAccount, "ГОРЯЧАЯ ВОДА", dateWithMonth1);
         Reading coldWaterReadingMonth1 = new Reading(12.25, adminPersonalAccount, "ХОЛОДНАЯ ВОДА", dateWithMonth1);
