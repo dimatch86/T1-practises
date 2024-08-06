@@ -50,6 +50,7 @@
         <spotbugs.version>4.8.6</spotbugs.version>
         <pmd-plugin.version>3.15.0</pmd-plugin.version>
         <checkstyle-plugin.version>3.4.0</checkstyle-plugin.version>
+        <tag.version>1.0.0</tag.version>
     </properties>
     <dependencies>
         <dependency>
@@ -393,7 +394,7 @@
                 </executions>
                 <configuration>
                     <repository>dimatch86/${project.build.finalName}</repository>
-                    <tag>${project.version}</tag>
+                    <tag>${tag.version}</tag>
                     <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                     <buildArgs>
                         <JAR_FILE>${project.build.finalName}.jar</JAR_FILE>
