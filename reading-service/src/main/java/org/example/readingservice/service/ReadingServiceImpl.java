@@ -23,6 +23,8 @@ import java.util.Optional;
 //@Loggable
 public class ReadingServiceImpl implements ReadingService {
 
+
+
     private final ReadingRepository readingRepository;
     private final ReadingTypeRepository readingTypeRepository;
 
