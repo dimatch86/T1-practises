@@ -13,6 +13,7 @@
     <groupId>org.example</groupId>
     <artifactId>Reading-Service</artifactId>
     <version>1.9.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -21,7 +22,7 @@
         <org.postgresql.version>42.5.4</org.postgresql.version>
         <org.liquibase.version>4.20.0</org.liquibase.version>
         <jbcrypt.version>0.4</jbcrypt.version>
-        <lombok.version>1.18.28</lombok.version>
+        <lombok.version>1.18.32</lombok.version>
         <junit-jupiter.version>5.9.3</junit-jupiter.version>
         <junit-jupiter.testcontainers.version>1.17.6</junit-jupiter.testcontainers.version>
         <postgres.testcontainers.version>1.17.6</postgres.testcontainers.version>
@@ -181,10 +182,19 @@
             <groupId>io.micrometer</groupId>
             <artifactId>micrometer-registry-prometheus</artifactId>
         </dependency>
-        <dependency>
+        <!--<dependency>
             <groupId>com.example</groupId>
             <artifactId>logging-starter</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+        </dependency>-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-aop</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.mapstruct</groupId>
+            <artifactId>mapstruct-processor</artifactId>
+            <version>1.5.5.Final</version>
         </dependency>
         <dependency>
             <groupId>io.micrometer</groupId>
@@ -218,19 +228,24 @@
                         <path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok</artifactId>
-                            <version>1.18.28</version>
+                            <version>1.18.32</version>
                         </path>
                         <path>
                             <groupId>org.mapstruct</groupId>
                             <artifactId>mapstruct-processor</artifactId>
                             <version>1.5.5.Final</version>
                         </path>
-                        <path>
+                        <!--<path>
                             <groupId>org.projectlombok</groupId>
                             <artifactId>lombok-mapstruct-binding</artifactId>
                             <version>0.2.0</version>
-                        </path>
+                        </path>-->
                     </annotationProcessorPaths>
+                    <compilerArgs>
+                        <compilerArg>
+                            -Amapstruct.defaultComponentModel=spring
+                        </compilerArg>
+                    </compilerArgs>
                 </configuration>
             </plugin>
             <plugin>
@@ -385,7 +400,7 @@
                 <executions>
                     <execution>
                         <id>default</id>
-                        <phase>package</phase>
+                        <phase>install</phase>
                         <goals>
                             <goal>build</goal>
                             <goal>push</goal>

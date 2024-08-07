@@ -2,7 +2,7 @@ package org.example.readingservice.service;
 
 import io.micrometer.core.annotation.Timed;
 import lombok.RequiredArgsConstructor;
-import org.example.loggingstarter.aop.Loggable;
+//import org.example.loggingstarter.aop.Loggable;
 import org.example.readingservice.exception.custom.NotAvailableReadingException;
 import org.example.readingservice.exception.custom.TooRecentReadingException;
 import org.example.readingservice.model.reading.Reading;
@@ -20,7 +20,7 @@ import java.util.Optional;
  */
 @RequiredArgsConstructor
 @Service
-@Loggable
+//@Loggable
 public class ReadingServiceImpl implements ReadingService {
 
     private final ReadingRepository readingRepository;
@@ -33,8 +33,8 @@ public class ReadingServiceImpl implements ReadingService {
      * @throws NotAvailableReadingException if the reading type is not available
      */
     @Override
-    @Timed(value = "readings_methods_duration",
-    description = "Время выполнения методов сервиса показаний")
+    //@Timed(value = "readings_methods_duration",
+    //description = "Время выполнения методов сервиса показаний")
     public void send(Reading reading) {
         Optional<Reading> latestReading = readingRepository.getLatestReading(reading.getReadingType(), reading.getPersonalAccount().toString());
         latestReading.ifPresentOrElse(latest -> {

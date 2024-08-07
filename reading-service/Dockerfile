@@ -1,11 +1,12 @@
-FROM openjdk:17-jdk-alpine3.14
+FROM maven:3.8.4-openjdk-17 as build
+WORKDIR /build
+COPY pom.xml .
+RUN mvn --fail-never verify
+COPY src src
+RUN mvn -T 10C -Dmaven.test.skip -DskipTests -o package
 
+FROM eclipse-temurin:17-jre-alpine
 ARG JAR_FILE
+COPY --from=build /build/target/${JAR_FILE} /app.jar
 
-RUN mkdir -p /apps
-COPY ./target/${JAR_FILE} /apps/app.jar
-COPY ./entrypoint.sh /apps/entrypoint.sh
-RUN chmod +x /apps/entrypoint.sh
-
-EXPOSE 8080
-CMD ["/apps/entrypoint.sh"]
+ENTRYPOINT ["java", "-jar", "/app.jar"]

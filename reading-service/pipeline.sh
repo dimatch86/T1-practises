@@ -37,16 +37,10 @@ check_tag() {
   echo "не найден"
 }
 
-#image_name="dimatch86/monitoring-service"
-#image_tag="1.8-SNAPSHOT"
-
-#check_tag "$image_name" "$image_tag"
-
 add_tag() {
   tag_name=$1
   git tag -a "${tag_name}" -m "Соответствует образу сборки с тегом - ${tag_name}"
 }
-#add_tag "from_bash2"
 
 function is_master() {
   # Получаем имя текущей ветки
@@ -71,12 +65,10 @@ function is_master() {
   echo "Находимся в ветке $current_branch и на последнем коммите"
 }
 
-is_commit() {
+is_committed() {
   status_output=$(git status --porcelain | grep -cv '^??')
-
     if [ "${status_output}" != 0 ]; then
       echo "Есть незафиксированные изменения в проекте"
-      #echo "$status_output"
       exit 1
     fi
 }
@@ -91,7 +83,7 @@ function get_hash() {
   for element in "${@:2}"; do
     item="$1/$element"
     if [ ! -e "$item" ]; then
-      continue # Переходим к следующей итерации, если файл или директрия не существует
+      continue
     fi
     hash=""
     if [ -d "$item" ]; then
@@ -107,9 +99,9 @@ function get_hash() {
 
 
 is_master
-is_commit
+is_committed
 hash=$(get_hash "${CDIR}" "${my_array[@]}")
-check_tag "dimatch86/gateway" "${hash}"
+check_tag "dimatch86/monitoring-service" "${hash}"
 add_tag "${hash}"
 mvn dockerfile:build -Dtag.version="${hash}"
 

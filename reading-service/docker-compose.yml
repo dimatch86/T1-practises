@@ -1,8 +1,8 @@
 version: '3'
 services:
-  postgres:
+  postgres2:
     image: postgres:12.3
-    container_name: monitoring_service_database
+    container_name: postgres2
     ports:
       - 5434:5432
     restart: on-failure
@@ -28,3 +28,13 @@ services:
       - "4317:4317" # the OpenTelemetry collector grpc
     environment:
       - COLLECTOR_OTLP_ENABLED=true
+  app:
+    image: dimatch86/monitoring-service:ad1196cc2ffaeb96904fd5edb9c6ba8260b7db91560f8e46cf10a76534db61f6
+    container_name: app
+    ports:
+      - 8085:8085
+    environment:
+      DATABASE_URL: jdbc:postgresql://postgres2:5432/monitoring_service_db
+      POSTGRES_USER: ylab_user
+      POSTGRES_PASSWORD: ylab_password
+    restart: on-failure
