@@ -12,6 +12,9 @@ App_Sub_Chart:
     name: myapp
     port: 8085
     replicas: 1
+    image:
+      repository: dimatch86/monitoring-service
+      tag: 1.9-SNAPSHOT
   jaeger:
     host: chart-jaeger-collector
     port: 4317

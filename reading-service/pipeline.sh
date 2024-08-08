@@ -74,7 +74,6 @@ is_committed() {
 }
 
 CDIR=$(pwd)
-echo "${CDIR}"
 declare -a my_array=("/src" "/pom.xml" "/Dockerfile")
 function get_hash() {
 
@@ -94,14 +93,20 @@ function get_hash() {
     total_hash+="${hash}"
   done
 
-  echo -n "$total_hash" | sha256sum | awk '{ print $1 }'
+  #echo -n "$total_hash" | sha256sum | awk '{ print $1 }'
+  echo -n "$total_hash" | sha256sum | head -c 8
 }
 
 
 is_master
-is_committed
+#is_committed
 hash=$(get_hash "${CDIR}" "${my_array[@]}")
 check_tag "dimatch86/monitoring-service" "${hash}"
-add_tag "${hash}"
+
 mvn dockerfile:build -Dtag.version="${hash}"
+status=$?
+if [ "${status}" -eq 1 ]; then
+  hash="Error_${hash}"
+fi
+add_tag "${hash}"
 

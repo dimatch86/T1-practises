@@ -1,6 +1,8 @@
 app:
   name: myapp
-  image: dimatch86/monitoring-service:1.9-SNAPSHOT
+  image:
+    repository: dimatch86/monitoring-service
+    tag: 1.9-SNAPSHOT
   replicas: 1
   port: 8085
 

@@ -52,6 +52,7 @@
         <pmd-plugin.version>3.15.0</pmd-plugin.version>
         <checkstyle-plugin.version>3.4.0</checkstyle-plugin.version>
         <tag.version>1.0.0</tag.version>
+        <project.image.name>dimatch86/${project.build.finalName}</project.image.name>
     </properties>
     <dependencies>
         <dependency>
@@ -391,6 +392,7 @@
                     <threshold>Medium</threshold>
                     <xmlOutput>true</xmlOutput>
                     <failOnError>false</failOnError>
+
                 </configuration>
             </plugin>
             <plugin>
@@ -408,7 +410,7 @@
                     </execution>
                 </executions>
                 <configuration>
-                    <repository>dimatch86/${project.build.finalName}</repository>
+                    <repository>${project.image.name}</repository>
                     <tag>${tag.version}</tag>
                     <useMavenSettingsForAuth>true</useMavenSettingsForAuth>
                     <buildArgs>
