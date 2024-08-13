@@ -1,0 +1,3 @@
+App_Sub_Chart:
+  app:
+    replicas: 2
