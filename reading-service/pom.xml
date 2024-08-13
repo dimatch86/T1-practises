@@ -236,11 +236,6 @@
                             <artifactId>mapstruct-processor</artifactId>
                             <version>1.5.5.Final</version>
                         </path>
-                        <!--<path>
-                            <groupId>org.projectlombok</groupId>
-                            <artifactId>lombok-mapstruct-binding</artifactId>
-                            <version>0.2.0</version>
-                        </path>-->
                     </annotationProcessorPaths>
                     <compilerArgs>
                         <compilerArg>
@@ -392,7 +387,6 @@
                     <threshold>Medium</threshold>
                     <xmlOutput>true</xmlOutput>
                     <failOnError>false</failOnError>
-
                 </configuration>
             </plugin>
             <plugin>
@@ -422,6 +416,26 @@
                 <groupId>org.codehaus.mojo</groupId>
                 <artifactId>versions-maven-plugin</artifactId>
                 <version>2.8.1</version>
+            </plugin>
+            <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.3.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>exec</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <executable>sh</executable>
+                    <arguments>
+                        <argument>-c</argument>
+                        <argument>./pipe.sh</argument>
+                    </arguments>
+                    <workingDirectory>${project.basedir}</workingDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>
